@@ -34,20 +34,20 @@ class PokerGame extends Phaser.Scene {
 
     createDeck() {
         const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
-        const values = ['2', '3', '4', '5', '10', 'J', 'Q', 'K', 'A', 'Joker'];
+        const values = ['2', '3', '4', '5', '10', 'J', 'Q', 'K', 'A'];
         let deck = [];
-
-        suits.forEach(suit => {
-            values.forEach(value => {
-                if (value !== '6' && value !== '7' && value !== '8' && value !== '9') {
-                    deck.push({ suit, value });
-                }
+        for (let i = 0; i < 5; i++) {
+            suits.forEach(suit => {
+                values.forEach(value => {
+                    if (value !== '6' && value !== '7' && value !== '8' && value !== '9') {
+                        deck.push({suit, value});
+                    }
+                });
             });
-        });
-
-        // Add Jokers
-        deck.push({ suit: 'Joker', value: 'Joker' });
-        deck.push({ suit: 'Joker', value: 'Joker' });
+            // Add Jokers
+            deck.push({ suit: 'Joker', value: 'Joker' });
+            deck.push({ suit: 'joker', value: 'joker' });
+        }
 
         return Phaser.Utils.Array.Shuffle(deck);
     }
@@ -67,7 +67,7 @@ class PokerGame extends Phaser.Scene {
         const defenderIndex = Phaser.Math.Between(0, 3);
         const defender = players[defenderIndex];
         const defenderPartner = players[(defenderIndex + 2) % 4];
-        const firstPlayer = players[(defenderIndex + 1) % 4];
+        const firstPlayer = defenderPartner;
 
         return { defender, defenderPartner, firstPlayer };
     }
