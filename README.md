@@ -34,3 +34,9 @@
 - `src/`
   - `index.html`: The main HTML file for the Phaser.js game.
   - `main.js`: The main JavaScript file containing the game logic.
+
+### Initialization Logic
+
+The game starts by randomly assigning 4 players and dealing cards. The deck is prepared by removing all 6, 7, 8, 9 cards, leaving a total of 190 cards. Each player receives 46 cards, and the remaining 6 cards are reserved as bottom cards for the defender to replace.
+
+The first player to use the bottom cards is the defender. The defender and their partner (alternating between A1/B1/A2/B2, with A1/A2 as a pair) will be the defending team for the round. The defender's partner will be the first player to play in the game.
